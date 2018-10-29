@@ -1,0 +1,7 @@
+Sarah	NY	8
+Rachel	NJ	9
+John	KY	11
+Brad	CO	7
+La'Quisha	GA	6
+Lucy	IL	12
+Cameron	WI	12
