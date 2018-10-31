@@ -1,5 +1,5 @@
 <?php
-echo "Logging in...\n\n";
+
 $Username = $_POST["username"];
 $Password = $_POST["password"];
 
@@ -31,8 +31,7 @@ if ( !$q_result = $mysqli->query($query) ) {
 		echo "Login Failed";
 	}
 	else{
-		echo "HELLO";
-		echo "Welcome". $q_result->fetch_assoc();
+		echo "Login Success";
 	}
 }
 
