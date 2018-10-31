@@ -33,6 +33,7 @@ if ( !$q_result = $mysqli->query($query) ) {
 	else{
 		echo "HELLO";
 		echo "Welcome". $q_result->fetch_assoc();
+	}
 }
 
 ?>
