@@ -6,7 +6,7 @@
 
 <br><br>
 
-echo "Enter your Username and Password below to log in\n";
+Enter your Username and Password below to log in
 
 <form action="Login.php" method="post">
 <div class='container'>

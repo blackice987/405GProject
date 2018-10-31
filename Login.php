@@ -3,7 +3,7 @@
 $Username = $_POST["username"];
 $Password = $_POST["password"];
 
-$Pass = '1382.Booda.1101'; //enter password 
+$Pass = 'root'; //enter password 
 $DB = 'VEXLeaderboards'; //Enter database name
 $mysqli = new mysqli('127.0.0.1', 'root',$Pass,$DB);
 
@@ -31,7 +31,9 @@ if ( !$q_result = $mysqli->query($query) ) {
 		echo "Login Failed";
 	}
 	else{
-		echo "Login Success";
+		while($s_names = $q_result->fetch_assoc()){
+			echo $s_names["Name"]. " logged in <br \>";
+		}
 	}
 }
 
