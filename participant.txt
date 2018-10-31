@@ -1,7 +1,7 @@
-Sarah	NY	8
-Rachel	NJ	9
-John	KY	11
-Brad	CO	7
-La'Quisha	GA	6
-Lucy	IL	12
-Cameron	WI	12
+Sarah	NY	8	S1	P
+Rachel	NJ	9	R1	P
+John	KY	11	Jq	P
+Brad	CO	7	B1	P2
+La'Quisha	GA	6	L1	P3
+Lucy	IL	12	L2	P4
+Cameron	WI	12	C1	P5

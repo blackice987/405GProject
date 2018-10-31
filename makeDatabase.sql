@@ -29,9 +29,11 @@ FIELDS TERMINATED BY '\t';
 -- Create 'Participant' table and upload data
 CREATE TABLE Participant
         (
-        Name VARCHAR(30) PRIMARY KEY NOT NULL,
+        Name VARCHAR(30) NOT NULL,
         Home_State VARCHAR(2),
-        Grade INT
+        Grade INT,
+	Username VARCHAR(50) PRIMARY KEY NOT NULL,
+	Password VARCHAR(50) NOT NULL
         );
 LOAD DATA LOCAL INFILE '/home/tlmi233/405GProject/participant.txt'
 INTO TABLE Participant
