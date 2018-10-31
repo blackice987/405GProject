@@ -1,15 +1,13 @@
 <?php
 
-echo "Account successfully created\n";
-
-
 $Username = $_POST["username"];
 $Password = $_POST["password"];
 $Name = $_POST["name"];
 $State = $_POST["state"];
 $Grade = $_POST["grade"];
 
-$Pass = 'root'; //enter password $DB = 'STUDENT DATABASE HERE'; //Enter database name
+$Pass = 'root'; //enter password 
+$DB = 'VEXLeaderboards'; //Enter database name
 $mysqli = new mysqli('127.0.0.1', 'root',$Pass,$DB);
 
 
@@ -24,17 +22,16 @@ $Use_DB_Query = "USE VEXLeaderboards;";
 
 }
 else{
-	$Insert_Query = "USE VEXLeaderboards; INSERT INTO Participant VALUES ('$Name', '$State', $Grade, '$Username', '$Password')";
-	echo "\n";
-	echo $Insert_Query;
-	echo "\n";
+	$Insert_Query = "INSERT INTO Participant VALUES ('$Name', '$State', $Grade, '$Username', '$Password')";
 	if ( !$q_result = $mysqli->query($Insert_Query) ) {
 		echo "Query failed: ". $mysqli->error. "\n";
 		exit;
 	}
 	else{
-		echo "Successfully added user to the db";
+		echo "User account successfully created";
 	}
 }
+
+
 
 ?>
