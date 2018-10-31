@@ -25,10 +25,9 @@
 
 
 <br><br>
-<input type="submit" value="Create Your Account">
-
-</form>
-
+<input type="submit" name="Create" value="Create Your Account">
+<br><br>
+Already have an account? Go to 128.163.232.243/loginPage.php to log in.
 
 
 </body>

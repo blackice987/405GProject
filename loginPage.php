@@ -18,6 +18,9 @@ Enter your Username and Password below to log in
 
 <br><br>
 <input type="submit" value="Click Here to Log In">
+<br><br>
+
+Don't have an account? Go to 128.163.232.243/registration.php to register.
 
 </form>
 
