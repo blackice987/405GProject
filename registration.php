@@ -1,5 +1,3 @@
-
-
 <html>
 <body>
 <Title>Create An Account</Title>
@@ -27,7 +25,8 @@
 <br><br>
 <input type="submit" name="Create" value="Create Your Account">
 <br><br>
-Already have an account? Go to 128.163.232.243/loginPage.php to log in.
+<a href="http://128.163.232.243/loginPage.php">Already have an account? Click here to Log In</a>
+
 
 
 </body>

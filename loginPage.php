@@ -20,7 +20,7 @@ Enter your Username and Password below to log in
 <input type="submit" value="Click Here to Log In">
 <br><br>
 
-Don't have an account? Go to 128.163.232.243/registration.php to register.
+<a href="http://128.163.232.243/registration.php">Don't have an account? Click here to register. </a>
 
 </form>
 
