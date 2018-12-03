@@ -6,7 +6,7 @@
 <br><br>
 Please provide the following information:
 
-<form action="Submit.php" method="post">
+<form action="reportMatch.php" method="post">
 <div class='container'>
         <label for='name' > Team 1 Name: </label><br/>
         <input type='text' name='Team1' id='Team1' maxlength = "8" /><br/>
