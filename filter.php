@@ -1,7 +1,7 @@
 <?php
 
 
-$Pass = '1382.Booda.1101'; //enter password 
+$Pass = 'root'; //enter password 
 $DB = 'VEXLeaderboards'; //Enter database name
 $mysqli = new mysqli('127.0.0.1', 'root',$Pass,$DB);
 

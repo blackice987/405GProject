@@ -10,7 +10,9 @@ $TournamentID = $_POST["Tournament"];
 $Pass = 'root'; //enter password
 $DB = 'VEXLeaderboards'; //Enter database name
 $mysqli = new mysqli('127.0.0.1', 'root',$Pass,$DB);
-
+$Winning_Score = 0;
+$Losing_Score = 0;
+$Winning_Team = "";
 
 // Check for connection error
 // If there is an error we will use $mysqli->connect_error
@@ -19,18 +21,36 @@ if ($mysqli->connect_errno) {
         echo "Could not connect to database \n";
         echo "Error: ". $mysqli->connect_error . "\n";
         exit;
-$Use_DB_Query = "USE VEXLeaderboards;";
 
 }
 else{
-        $Insert_Query = "INSERT INTO Participant VALUES ('$Name', '$State', $Grade, '$Username', '$Password')";
+	if ($Team1Score > $Team2Score){
+		$Winning_Score = $Team1Score;
+		$Losing_Score = $Team2Score;
+		$Winning_Team = $Team1Name;
+	}
+	else{
+		$Winning_Score = $Team2Score;
+		$Losing_Score = $Team1Score;
+		Winning_Team = $Team2Name;
+	}
+        $Insert_Query = "INSERT INTO Matches VALUES (0, $Winning_Score, $Losing_Score, '$Winning_Team');";
         if ( !$q_result = $mysqli->query($Insert_Query) ) {
                 echo "Query failed: ". $mysqli->error. "\n";
                 exit;
         }
         else{
-                echo "User account successfully created";
+                echo "Match Reported";
         }
+//	$UpdateQuery = "Source ~/405GProject/performUpdates.sql;";
+//	 if ( !$q_result = $mysqli->query($UpdateQuery) ) {
+//                echo "Query failed: ". $mysqli->error. "\n";
+//                exit;
+//        }
+//        else{
+//                echo "Leaderboard Updated";
+//        }
+
 }
 
 

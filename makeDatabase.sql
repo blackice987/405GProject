@@ -44,7 +44,7 @@ FIELDS TERMINATED BY '\t';
 -- Create 'Match' table and upload data
 CREATE TABLE Matches
         (
-        Match_ID INT PRIMARY KEY NOT NULL,
+        Match_ID INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
         Winning_Score INT NOT NULL,
         Losing_Score INT NOT NULL,
         Winning_Team VARCHAR(8)
@@ -54,16 +54,3 @@ INTO TABLE Matches
 FIELDS TERMINATED BY '\t';
 
 source ~/405GProject/performUpdates.sql
-
-
-Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "5454W") Where Team_Name = "5454W";
-Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "98063A") Where Team_Name = "98063A";
-Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "5454A") Where Team_Name = "5454A";
-Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "51444D") Where Team_Name = "51444D";
-Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "1853B") Where Team_Name = "1853B";
-
-Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "5454W") WHERE Team_Name = "5454W";
-Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "98063A") WHERE Team_Name = "98063A";
-Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "5454A") WHERE Team_Name = "5454A";
-Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "51444D") WHERE Team_Name = "51444D";
-Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "1853B") WHERE Team_Name = "1853B";

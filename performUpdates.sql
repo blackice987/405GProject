@@ -12,4 +12,21 @@ Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE 
 Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "51444D") WHERE Team_Name = "51444D";
 Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "1853B") WHERE Team_Name = "1853B";
 -- Calculate All Team's Ranks
-SET @cnt = 0; 
+DROP PROCEDURE IF EXISTS UPDATERANKS;
+DELIMITER ;;
+
+CREATE PROCEDURE UPDATERANKS()
+BEGIN
+DECLARE X INT DEFAULT 0;
+DECLARE Max INT DEFAULT 0;
+SELECT COUNT(*) FROM Teams INTO Max;
+SET X = 0;
+
+while X < Max DO
+UPDATE Teams SET Rank = (X+1) WHERE Team_Name = (Select Team_Name From (Select * From Teams) as top ORDER BY Win_Points DESC, Strength_Points DESC LIMIT 1 OFFSET X);
+SET X = X + 1;
+END WHILE;
+END;
+;;
+DELIMITER ;
+CALL UPDATERANKS();
