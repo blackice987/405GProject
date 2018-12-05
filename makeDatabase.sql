@@ -9,7 +9,9 @@ USE VEXLeaderboards;
 CREATE TABLE Teams
         (
         Team_Name VARCHAR(8) NOT NULL PRIMARY KEY,
-        Total_Score INT
+        Win_Points INT,
+	Strength_Points INT, 
+	Rank INT
         );
 LOAD DATA LOCAL INFILE '/home/tlmi233/405GProject/teams.txt'
 INTO TABLE Teams
@@ -51,22 +53,17 @@ LOAD DATA LOCAL INFILE '/home/tlmi233/405GProject/match.txt'
 INTO TABLE Matches
 FIELDS TERMINATED BY '\t';
 
+source ~/405GProject/performUpdates.sql
 
 
--- Create 'enrolled' table and upload data
---
--- References student id and course id together as primary
--- key
--- CREATE TABLE enrolled
---        (
---        sid INT NOT NULL,
---        cid INT NOT NULL,
---        grade VARCHAR(1) NOT NULL,
---        PRIMARY KEY (sid, cid),
---        FOREIGN KEY (sid) REFERENCES student(sid),
---        FOREIGN KEY (cid) REFERENCES courses(cid)
---        );
--- LOAD DATA LOCAL INFILE '/home/tlmi233/forLab3/enrolled.txt'
--- INTO TABLE enrolled
--- FIELDS TERMINATED BY '\t';
+Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "5454W") Where Team_Name = "5454W";
+Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "98063A") Where Team_Name = "98063A";
+Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "5454A") Where Team_Name = "5454A";
+Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "51444D") Where Team_Name = "51444D";
+Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = "1853B") Where Team_Name = "1853B";
 
+Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "5454W") WHERE Team_Name = "5454W";
+Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "98063A") WHERE Team_Name = "98063A";
+Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "5454A") WHERE Team_Name = "5454A";
+Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "51444D") WHERE Team_Name = "51444D";
+Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = "1853B") WHERE Team_Name = "1853B";
