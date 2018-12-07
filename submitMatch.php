@@ -41,6 +41,7 @@ else{
         }
         else{
                 echo "Match Reported";
+		echo "\r\n";
         }
 //	$UpdateQuery = "Source ~/405GProject/performUpdates.sql;";
 //	$UpdateQuery = file_get_contents('~/405GProject/performUpdates.sql')
@@ -51,10 +52,55 @@ else{
 //        else{
 //                echo "Leaderboard Updated";
 //        }
-
-	exec('mysql -u "root" "-proot" < "performUpdates.sql"', $out, $returned);
-	echo "$out $returned";
+	//$cmd = "mysql -u 'root' '-proot' -e 'source performUpdates.sql'";
+	//$output = $mysqli->exec($query);
+	//echo $output;
+//	foreach($out['data'] as $result){
+//		echo $result['type'], '<br>';
+//	}
+//	echo "$out $returned";
 }
+//	echo "attempting to update db";
+	$query = file_get_contents("performUpdates.sql");
+	$stmt = "mysql -u 'root' '-proot' -e 'source performUpdates.sql";
+//	if ($stmt->execute())
+//		echo "Leaderboard Updated";
+//	else
+//		echo "Leaderboard failed to update";
+	$UpdateWin = "Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = '$Winning_Team') Where Team_Name = '$Winning_Team'";
+	if ( !$q_result = $mysqli->query($UpdateWin) ) {
+                echo "Query failed: ". $mysqli->error. "\n";
+                exit;
+        }
+        else{
+//                echo "Win Points Updated for $Wining_Team\n";
+		echo "\r\n";
+        }
+	
+	$UpdateStrength = "Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = '$Winning_Team') WHERE Team_Name = '$Winning_Team'";
+        if ( !$q_result = $mysqli->query($UpdateStrength) ) {
+                echo "Query failed: ". $mysqli->error. "\n";
+                exit;
+        }
+        else{
+//                echo "Strength Points Updated for $Wining_Team\n";
+		echo "\r\n";
+	}
+	$Recalculate = "CALL UPDATERANKS()";
+	if ( !$q_result = $mysqli->query($Recalculate) ) {
+                echo "Query failed: ". $mysqli->error. "\n";
+                exit;
+        }
+        else{
+//                echo "Leaderboard recalculated\n";
+		echo "\r\n";
+	}
+
+//	exec("mysql -u 'root' '-proot' --database VEXLeaderboards -e 'Update Teams Set Win_Points = (Select Count(*) From Matches Where Winning_Team = \"$Winning_Team\") Where Team_Name = \"Winning_Team\"");
+//	exec("mysql -u 'root' '-proot' --database VEXLeaderboards -e 'Update Teams Set Strength_Points = (SELECT SUM(Losing_Score) FROM Matches WHERE Winning_Team = \"$Winning_Team\") WHERE Team_Name = \"$Winning_Team\"");g_Team = \"$Winning_Team\") WHERE Team_Name = \"$Winning_Team\"");
+//	exec("mysql -u 'root' '-proot' --database VEXLeaderboards -e 'CALL UPDATERANKS()'");
+
+
 
 
 
