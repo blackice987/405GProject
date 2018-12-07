@@ -11,7 +11,7 @@ Please select an action:
 <input type="button" name="Create" value="Create Your Account" onclick="window.location.href='http://128.163.232.243/registration.php'">
 
 <input type="button" name="Sign In" value="Sign In to Your Account" onclick="window.location.href='http://128.163.232.243/loginPage.php'">
-
+<input type="button" name="Sign Out" value="Sign Out" onclick="window.location.href='http://128.163.232.242/signout.php'">
 <input type="button" name="Report" value="Report Match Results" onclick="window.location.href='http://128.163.232.243/report.php'">
 <br><br>
 Filter by:
