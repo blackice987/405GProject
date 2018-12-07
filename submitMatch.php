@@ -24,7 +24,7 @@ if ($mysqli->connect_errno) {
 
 }
 else{
-	if ($Team1Score > $Team2Score){
+	if ( $Team1Score > $Team2Score ) {
 		$Winning_Score = $Team1Score;
 		$Losing_Score = $Team2Score;
 		$Winning_Team = $Team1Name;
@@ -32,7 +32,7 @@ else{
 	else{
 		$Winning_Score = $Team2Score;
 		$Losing_Score = $Team1Score;
-		Winning_Team = $Team2Name;
+		$Winning_Team = $Team2Name;
 	}
         $Insert_Query = "INSERT INTO Matches VALUES (0, $Winning_Score, $Losing_Score, '$Winning_Team');";
         if ( !$q_result = $mysqli->query($Insert_Query) ) {
@@ -43,7 +43,8 @@ else{
                 echo "Match Reported";
         }
 //	$UpdateQuery = "Source ~/405GProject/performUpdates.sql;";
-//	 if ( !$q_result = $mysqli->query($UpdateQuery) ) {
+//	$UpdateQuery = file_get_contents('~/405GProject/performUpdates.sql')
+//	 if ( !$q_result = $mysqli_multi_query($UpdateQuery) ) {
 //                echo "Query failed: ". $mysqli->error. "\n";
 //                exit;
 //        }
@@ -51,6 +52,7 @@ else{
 //                echo "Leaderboard Updated";
 //        }
 
+	exec("mysql < ~/405GProject/performUpdates.sql");
 }
 
 
