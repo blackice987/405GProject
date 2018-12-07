@@ -35,7 +35,7 @@ else{
                 while($row = $q_result->fetch_assoc()){
 
         		echo "<tr>";
-        		echo "<td>".$row["Rank"]."</td><td>".$row["Team_Name"]."tn</td><td>".$row["Win_Points"]."</td><td>".$row["Strength_Points"]."</td>";
+        		echo "<td>".$row["Rank"]."</td><td>".$row["Team_Name"]."</td><td>".$row["Win_Points"]."</td><td>".$row["Strength_Points"]."</td>";
         		echo "</tr>";
 
                 }
