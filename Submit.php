@@ -28,7 +28,9 @@ else{
 		exit;
 	}
 	else{
-		echo "User account successfully created";
+		echo "User account successfully created\n";
+//		<a href="http://128.163.232.243/registration.php">Don't have an account? Click here to register. </a>
+		echo "Return to the home page to log in";
 	}
 }
 

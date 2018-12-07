@@ -52,7 +52,8 @@ else{
 //                echo "Leaderboard Updated";
 //        }
 
-	exec("mysql < ~/405GProject/performUpdates.sql");
+	exec('mysql -u "root" "-proot" < "performUpdates.sql"', $out, $returned);
+	echo "$out $returned";
 }
 
 

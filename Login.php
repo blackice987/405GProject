@@ -1,5 +1,9 @@
 <?php
 
+$cookie_name = "user";
+$cookie_value = $_POST["username"];
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+
 $Username = $_POST["username"];
 $Password = $_POST["password"];
 
